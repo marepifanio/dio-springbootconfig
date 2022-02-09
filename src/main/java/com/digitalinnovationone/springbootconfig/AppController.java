@@ -17,6 +17,9 @@ public class AppController {
     @Value("${app.calc}")
     private String appCalc;
 
+    @Value("${ENV_DB_URL:NENHUMA}")
+    private String dbEnvironmentVariable;
+
     @GetMapping("/")
     public String getAppHome(){return appHome; }
 
@@ -27,5 +30,10 @@ public class AppController {
 
     @GetMapping("/calc")
     public String getAppCalc() { return appCalc; }
+
+    @GetMapping("/envVariable")
+    public String getDbEnvironmentVariable(){
+        return "A seguinte variável de ambiente foi passada: " + dbEnvironmentVariable;
+    }
 
 }
